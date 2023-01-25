@@ -1,4 +1,6 @@
 .mission-container {
+  max-width: 80%;
+  margin: auto;
   background-color: rgba(40, 40, 40, .75);
   padding: 15px;
   border-radius: 10px;
