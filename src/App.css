@@ -4,13 +4,13 @@
 
 body {
   text-align: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Roboto Mono';
   font-size: 20px;
   background-image: url('./images/background.png');
   background-color: black;
   background-repeat: no-repeat;
   background-position: center 0;
-  color: white;
+  color: rgb(200, 175, 0);
 }
 
 .main {

@@ -1,6 +1,10 @@
 .planet-container {
-  color: white;
+  color: rgb(200, 175, 0);
+  border: 1px solid rgb(200, 175, 0);
+  background-color: rgba(200, 175, 0, 0.1);
+  border-radius: 6px;
   margin: 0 5px;
+  font-family: 'Roboto Mono';
   font-size: x-small;
   text-align: center;
 }
