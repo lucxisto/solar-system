@@ -1,0 +1,12 @@
+.planet-container {
+  color: white;
+  text-align: center;
+  background-color: black;
+  border: 1px solid white;
+  border-radius: 10px;
+  margin: 0 5px;
+}
+
+.planet-img {
+  max-width: 100%;
+}
