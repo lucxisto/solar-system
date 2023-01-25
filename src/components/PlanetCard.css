@@ -1,7 +1,8 @@
 .planet-container {
   color: white;
-  text-align: center;
   margin: 0 5px;
+  font-size: x-small;
+  text-align: center;
 }
 
 .planet-img {
