@@ -3,17 +3,20 @@
 }
 
 body {
-  text-align: center;
-  font-family: 'Roboto Mono';
-  font-size: 20px;
-  background-image: url('./images/background.png');
   background-color: black;
-  background-repeat: no-repeat;
+  background-image: url('./images/background.jpg');
   background-position: center 0;
+  background-repeat: no-repeat;
+  background-size: cover;
   color: rgb(200, 175, 0);
+
+  /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
+  font-family: Roboto Mono;
+  font-size: 20px;
+  text-align: center;
 }
 
 .main {
-  max-width: 80%;
   margin: auto;
+  max-width: 80%;
 }

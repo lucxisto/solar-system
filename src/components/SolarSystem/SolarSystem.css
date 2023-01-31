@@ -4,7 +4,8 @@
   justify-content: space-evenly;
   padding: 20px;
 }
-.solar-system{
-  color: white;
+
+.solar-system {
+  color: rgb(200, 175, 0);
   text-align: center;
 }

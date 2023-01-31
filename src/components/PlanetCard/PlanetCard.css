@@ -1,12 +1,19 @@
 .planet-container {
-  color: rgb(200, 175, 0);
-  border: 1px solid rgb(200, 175, 0);
   background-color: rgba(200, 175, 0, 0.1);
+  border: 1px solid rgb(200, 175, 0);
   border-radius: 6px;
-  margin: 0 5px;
-  font-family: 'Roboto Mono';
+  color: rgb(200, 175, 0);
+
+  /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
+  font-family: Roboto Mono;
   font-size: x-small;
+  margin: 0 5px;
   text-align: center;
+}
+
+.planet-container:hover {
+  background-color: rgba(200, 175, 0, 0.7);
+
 }
 
 .planet-img {
