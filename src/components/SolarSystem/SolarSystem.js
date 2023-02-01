@@ -1,13 +1,11 @@
 import React from 'react';
-import Title from '../Title/Title';
-import 'animate.css'
 import Typewriter from 'typewriter-effect/dist/core';
+import Title from '../Title/Title';
+import 'animate.css';
 import planets from '../../data/planets';
 import PlanetCard from '../PlanetCard/PlanetCard';
 import PlanetInfoCard from '../PlanetInfoCard/PlanetInfoCard';
 import './SolarSystem.css';
-
-
 
 class SolarSystem extends React.Component {
   constructor() {
@@ -18,12 +16,12 @@ class SolarSystem extends React.Component {
       planetName: '',
       planetImage: '',
       planetDescription: '',
-    }
+    };
   }
 
   onClickPlanet = ({ target }) => {
     const { planetClick } = this.state;
-    if(planetClick) {
+    if (planetClick) {
       const divInfo = document.querySelector('.planet-info');
       divInfo.classList.add('animate__animated', 'animate__fadeOutDown');
       setTimeout(() => {
@@ -33,41 +31,58 @@ class SolarSystem extends React.Component {
           planetName: '',
         });
         this.chamaOPlaneta(target);
-      },800);
+      }, 800);
       console.log(planetClick, 'onclickplanet');
     } else {
       this.chamaOPlaneta(target);
     }
-  }
+  };
 
   chamaOPlaneta = (target) => {
     const { innerText } = target;
     const ourPlanet = planets.find((planet) => planet.name
       .toLowerCase().includes(innerText.toLowerCase()));
+    setTimeout(() => {
+      this.setState({
+        planetName: ourPlanet.name,
+        planetImage: ourPlanet.image,
+        planetDescription: ourPlanet.description,
+        planetClick: true,
+      });
+      const divInfo = document.querySelector('.planet-info');
+      divInfo.classList.add('animate__animated', 'animate__fadeInDown');
+      const typewriterDiv = document.querySelector('.writer');
+      typewriterDiv.innerHTML = '';
       setTimeout(() => {
-        this.setState({
-          planetName: ourPlanet.name,
-          planetImage: ourPlanet.image,
-          planetDescription: ourPlanet.description,
-          planetClick: true,
-        })
-        const divInfo = document.querySelector('.planet-info');
-        divInfo.classList.add('animate__animated', 'animate__fadeInDown');
-        const typewriterDiv = document.querySelector('.writer');
-        typewriterDiv.innerHTML = '';
-        setTimeout(() => {
-          // debugger
-          const typewriter = new Typewriter(typewriterDiv, {
-            strings: `Planeta: ${this.state.planetName} <br/> Descrição: ${this.state.planetDescription}`,
-            delay: 10,
-            autoStart: true,
-            // delay: 900,
-          });
+        const {
+          planetName,
+          planetDescription,
+          } = this.state;
+        const {
+          distanceFromSun,
+          orbitalPeriod,
+          radius,
+          mass,
+          lengthOfDay
+        } = planetDescription;
+        // debugger
+        const typewriter = new Typewriter(typewriterDiv, {
+          strings: `Planeta: ${planetName} 
+            <br/> Distancia do Sol: ${distanceFromSun}
+            <br/> Periodo Orbital: ${orbitalPeriod}
+            <br/> Raio: ${radius}
+            <br/> Massa: ${mass}
+            <br/> Duração do dia: ${lengthOfDay}`,
+          delay: 10,
+          autoStart: true,
+          // delay: 900,
+        });
         divInfo.classList.remove('animate__animated', 'animate__fadeInDown');
-      },800)
+      }, 800);
       console.log(this.state.planetClick, 'chamaOPlaneta');
     }, 10);
-  }
+  };
+
   render() {
     const { planetClick, planetName, planetImage, planetDescription } = this.state;
     return (
@@ -81,19 +96,18 @@ class SolarSystem extends React.Component {
               planetImage={ planet.image }
               planetClick={ this.onClickPlanet }
             />
-            
           ))}
-          
-            
-        </div>  
-        <section className="planet-info" style={{ display: planetClick ? 'block' : 'none' }}>
+        </div>
+        <section
+          className="planet-info"
+          style={ { display: planetClick ? 'block' : 'none' } }
+        >
           <PlanetInfoCard
             planetName={ planetName }
             planetImage={ planetImage }
             planetDescription={ planetDescription }
           />
         </section>
-          
       </div>
     );
   }

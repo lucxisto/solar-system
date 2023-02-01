@@ -1,15 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Typewriter from 'typewriter-effect';
-import './PlanetInfoCard.css'
+import './PlanetInfoCard.css';
 
 export default class PlanetInfoCard extends React.Component {
-  
   render() {
-    
-    const { planetName, planetImage, planetDescription } = this.props;
+    const { planetName, planetImage } = this.props;
     return (
-      <div className="container">
+      <div className="info-container">
         <img src={ planetImage } alt={ planetName } />
         <div className="writer" />
       </div>

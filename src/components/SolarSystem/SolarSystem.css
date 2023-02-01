@@ -11,8 +11,5 @@
 }
 
 .planet-info {
-  border: 1px solid yellow;
-  border-radius: 10px;
-  height: fit-content;
   margin-bottom: 20px;
 }

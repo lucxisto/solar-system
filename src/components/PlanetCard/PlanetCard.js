@@ -10,12 +10,12 @@ class PlanetCard extends React.Component {
         className="planet-container"
         onClick={ planetClick }
         value={ planetName }
-        style={{
+        style={ {
           backgroundImage: `url(${planetImage})`,
-        }}
+        } }
       >
         <p data-testid="planet-name">
-          {planetName}
+          { planetName }
         </p>
       </div>
     );
@@ -25,6 +25,7 @@ class PlanetCard extends React.Component {
 PlanetCard.propTypes = {
   planetName: PropTypes.string.isRequired,
   planetImage: PropTypes.string.isRequired,
+  planetClick: PropTypes.func.isRequired,
 };
 
 export default PlanetCard;
