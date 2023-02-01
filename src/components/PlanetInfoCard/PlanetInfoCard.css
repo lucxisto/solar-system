@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+  flex-flow: row;
+  filter: sepia(.6);
+}
+
+.writer {
+  margin: 20px 0 0 20px;
+  text-align: left;
+}

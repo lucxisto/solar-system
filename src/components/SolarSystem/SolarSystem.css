@@ -9,3 +9,10 @@
   color: rgb(200, 175, 0);
   text-align: center;
 }
+
+.planet-info {
+  border: 1px solid yellow;
+  border-radius: 10px;
+  height: fit-content;
+  margin-bottom: 20px;
+}
