@@ -23,65 +23,67 @@ class SolarSystem extends React.Component {
     const { planetClick } = this.state;
     if (planetClick) {
       const divInfo = document.querySelector('.planet-info');
-      divInfo.classList.add('animate__animated', 'animate__fadeOutDown');
+      divInfo.classList.add('animate__animated', 'animate__slideOutRight');
       setTimeout(() => {
-        divInfo.classList.remove('animate__animated', 'animate__fadeOutDown');
+        divInfo.classList.remove('animate__animated', 'animate__slideOutRight');
         this.setState({
           planetClick: false,
           planetName: '',
         });
-        this.chamaOPlaneta(target);
-      }, 800);
+        this.callInfoCard(target);
+      }, 1000);
       console.log(planetClick, 'onclickplanet');
     } else {
-      this.chamaOPlaneta(target);
+      this.callInfoCard(target);
     }
   };
 
-  chamaOPlaneta = (target) => {
+  callInfoCard = (target) => {
     const { innerText } = target;
     const ourPlanet = planets.find((planet) => planet.name
       .toLowerCase().includes(innerText.toLowerCase()));
-    setTimeout(() => {
-      this.setState({
-        planetName: ourPlanet.name,
-        planetImage: ourPlanet.image,
-        planetDescription: ourPlanet.description,
-        planetClick: true,
-      });
-      const divInfo = document.querySelector('.planet-info');
-      divInfo.classList.add('animate__animated', 'animate__fadeInDown');
-      const typewriterDiv = document.querySelector('.writer');
-      typewriterDiv.innerHTML = '';
-      setTimeout(() => {
-        const {
-          planetName,
-          planetDescription,
-          } = this.state;
-        const {
-          distanceFromSun,
-          orbitalPeriod,
-          radius,
-          mass,
-          lengthOfDay
-        } = planetDescription;
-        // debugger
-        const typewriter = new Typewriter(typewriterDiv, {
-          strings: `Planeta: ${planetName} 
-            <br/> Distancia do Sol: ${distanceFromSun}
-            <br/> Periodo Orbital: ${orbitalPeriod}
-            <br/> Raio: ${radius}
-            <br/> Massa: ${mass}
-            <br/> Duração do dia: ${lengthOfDay}`,
-          delay: 10,
-          autoStart: true,
-          // delay: 900,
-        });
-        divInfo.classList.remove('animate__animated', 'animate__fadeInDown');
-      }, 800);
-      console.log(this.state.planetClick, 'chamaOPlaneta');
-    }, 10);
+    this.updatePlanet(ourPlanet);
+    const divInfo = document.querySelector('.planet-info');
+    divInfo.classList.add('animate__animated', 'animate__slideInLeft');
+    const typewriterDiv = document.querySelector('.writer');
+    typewriterDiv.innerHTML = '';
+    this.createWriter(typewriterDiv);
+    console.log(this.state.planetClick, 'chamaOPlaneta');
   };
+  
+  createWriter = (typewriterDiv) =>{
+    setTimeout(() => {
+      const { planetName, planetDescription } = this.state;
+      const { distanceFromSun, orbitalPeriod,
+        radius, mass, lengthOfDay } = planetDescription;
+      const typewriter = new Typewriter(typewriterDiv, {
+        strings: `Planeta: ${planetName} 
+        <br/> Distancia do Sol: ${distanceFromSun}
+        <br/> Periodo Orbital: ${orbitalPeriod}
+        <br/> Raio: ${radius}
+        <br/> Massa: ${mass}
+        <br/> Duração do dia: ${lengthOfDay}`,
+        delay: 15,
+        autoStart: true,
+      });
+    }, 850);
+  };
+  
+  
+  updatePlanet = (ourPlanet) => {
+    this.setState({
+      planetName: ourPlanet.name,
+      planetImage: ourPlanet.image,
+      planetDescription: ourPlanet.description,
+      planetClick: true,
+    });
+  }
+
+componentWillUnmount() {
+  const divInfo = document.querySelector('.planet-info');
+  divInfo.classList.remove('animate__animated', 'animate__slideOutRight');
+
+}
 
   render() {
     const { planetClick, planetName, planetImage, planetDescription } = this.state;
