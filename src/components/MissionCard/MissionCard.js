@@ -6,22 +6,21 @@ import { ImLocation } from 'react-icons/im';
 
 class MissionCard extends React.Component {
   render() {
-    const { name, year, country, destination } = this.props;
-
+    const { name, year, country, destination, missionOnClick, missionIndex} = this.props;
     return (
-      <div data-testid="mission-card" className="mission-card">
-        <p data-testid="mission-name" className="mission-name">{ name }</p>
+      <div className={ `mission-card ${missionIndex}` } onClick={ missionOnClick }>
+        <p data-testid="mission-name" className={`mission-name ${missionIndex}`}>{ name }</p>
         <hr />
-        <section className="mission-info">
-          <p data-testid="mission-year">
+        <section className={ `mission-info ${missionIndex}` }>
+          <p className={ missionIndex }>
             <AiFillCalendar />
             { year }
           </p>
-          <p data-testid="mission-country">
+          <p className={ missionIndex }>
             <ImLocation />
             { country }
           </p>
-          <p data-testid="mission-destination">
+          <p className={ missionIndex }>
             <AiFillFlag />
             { destination }
           </p>

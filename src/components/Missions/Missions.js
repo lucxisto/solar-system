@@ -1,9 +1,7 @@
-/* eslint-disable react/jsx-boolean-value */
-/* eslint-disable import/no-unresolved */
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode } from 'swiper';
-// import { MdOutlineArrowBackIos, MdOutlineArrowForwardIos } from 'react-icons/md';
+import Typewriter from 'typewriter-effect/dist/core';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import Title from '../Title/Title';
@@ -39,6 +37,53 @@ const breakpointsParameter = {
 };
 
 class Missions extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      missionClicked: false,
+      mission: {
+        name: '',
+        year: '',
+        country: '',
+        destination: '',
+        about: '',
+      },
+    }
+  }
+  onClickMission = ({ target }) => {
+    const missionIndex = parseFloat(target.className.replace(/[^0-9]/g, ''))
+    const ourMission = missions.find((_mission, index) => index === missionIndex);
+    this.updateMission(ourMission);
+    const missionTypewriter = document.querySelector('.mission-info-card');
+    missionTypewriter.innerHTML = '';
+    this.createWriter(missionTypewriter);
+  };
+
+  createWriter = (typewriterDiv) => {
+    setTimeout(() => {
+      const { about } = this.state.mission;
+      const typewriter = new Typewriter(typewriterDiv, {
+        strings: about,
+        delay: 45,
+        autoStart: true,
+      });
+    }, 500);
+  }
+
+  updateMission = (mission) => {
+    const { name, year, country, destination, about } = mission;
+    this.setState({
+      mission: {
+        name,
+        year,
+        country,
+        destination,
+        about,
+      }
+    })
+  }
+
   render() {
     return (
       <div className="mission-container">
@@ -50,21 +95,23 @@ class Missions extends React.Component {
           keyboard={ true }
           breakpoints={ breakpointsParameter }
         >
-          {/* <MdOutlineArrowBackIos className="left-arrow" /> */}
-          {missions.map((mission) => (
+          {missions.map((mission, index) => (
             <SwiperSlide
               key={ mission.name }
             >
               <MissionCard
+                missionIndex={ index }
                 name={ mission.name }
                 year={ mission.year }
                 country={ mission.country }
                 destination={ mission.destination }
+                missionOnClick={ this.onClickMission }
               />
             </SwiperSlide>
           ))}
-          {/* <MdOutlineArrowForwardIos className="right-arrow" /> */}
+          
         </Swiper>
+        <section className='mission-info-card' />
       </div>
     );
   }

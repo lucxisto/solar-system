@@ -9,8 +9,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   color: rgb(200, 175, 0);
-
-  /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
+  filter: sepia(.6);
   font-family: Roboto Mono;
   font-size: 20px;
   text-align: center;
@@ -19,4 +18,8 @@ body {
 .main {
   margin: auto;
   max-width: 80%;
+}
+
+footer {
+  height: 50px;
 }

@@ -4,7 +4,6 @@ import Title from '../Title/Title';
 import 'animate.css';
 import planets from '../../data/planets';
 import PlanetCard from '../PlanetCard/PlanetCard';
-import PlanetInfoCard from '../PlanetInfoCard/PlanetInfoCard';
 import './SolarSystem.css';
 
 class SolarSystem extends React.Component {
@@ -48,7 +47,6 @@ class SolarSystem extends React.Component {
     const typewriterDiv = document.querySelector('.writer');
     typewriterDiv.innerHTML = '';
     this.createWriter(typewriterDiv);
-    console.log(this.state.planetClick, 'chamaOPlaneta');
   };
   
   createWriter = (typewriterDiv) =>{
@@ -104,11 +102,10 @@ componentWillUnmount() {
           className="planet-info"
           style={ { display: planetClick ? 'block' : 'none' } }
         >
-          <PlanetInfoCard
-            planetName={ planetName }
-            planetImage={ planetImage }
-            planetDescription={ planetDescription }
-          />
+          <div className="info-container">
+            <img src={ planetImage } alt={ planetName } />
+            <div className="writer" />
+          </div>
         </section>
       </div>
     );

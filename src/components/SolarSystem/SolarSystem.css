@@ -13,3 +13,17 @@
 .planet-info {
   margin-bottom: 20px;
 }
+
+.info-container {
+  background-color: rgb(27, 26, 17);
+  display: flex;
+  flex-flow: row;
+  border: 1px solid yellow;
+  border-radius: 10px;
+  height: fit-content;
+}
+
+.writer {
+  margin: 100px 0 0 20px;
+  text-align: left;
+}

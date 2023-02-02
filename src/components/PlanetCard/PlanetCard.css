@@ -8,8 +8,6 @@
   color: rgb(200, 175, 0);
   cursor: pointer;
   filter: sepia(.6);
-
-  /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
   font-family: Roboto Mono;
   font-size: x-small;
   margin: 0 5px;

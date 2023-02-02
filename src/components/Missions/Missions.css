@@ -7,3 +7,8 @@
   overflow-y: auto;
   padding: 15px;
 }
+
+.mission-info-card {
+  text-align: left;
+  padding: 20px;
+}
