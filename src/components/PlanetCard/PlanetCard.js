@@ -6,6 +6,7 @@ class PlanetCard extends React.Component {
   render() {
     const { planetName, planetImage, planetClick } = this.props;
     return (
+      // eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events
       <div
         className="planet-container"
         onClick={ planetClick }
@@ -14,7 +15,7 @@ class PlanetCard extends React.Component {
           backgroundImage: `url(${planetImage})`,
         } }
       >
-        <p data-testid="planet-name">
+        <p className="planet-name">
           { planetName }
         </p>
       </div>

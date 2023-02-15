@@ -6,6 +6,8 @@ import planets from '../../data/planets';
 import PlanetCard from '../PlanetCard/PlanetCard';
 import './SolarSystem.css';
 
+const infoClassName = '.planet-info';
+
 class SolarSystem extends React.Component {
   constructor() {
     super();
@@ -18,10 +20,16 @@ class SolarSystem extends React.Component {
     };
   }
 
+  componentWillUnmount() {
+    const divInfo = document.querySelector(infoClassName);
+    divInfo.classList.remove('animate__animated', 'animate__slideOutRight');
+  }
+
   onClickPlanet = ({ target }) => {
+    const timeoutTimer = 1000;
     const { planetClick } = this.state;
     if (planetClick) {
-      const divInfo = document.querySelector('.planet-info');
+      const divInfo = document.querySelector(infoClassName);
       divInfo.classList.add('animate__animated', 'animate__slideOutRight');
       setTimeout(() => {
         divInfo.classList.remove('animate__animated', 'animate__slideOutRight');
@@ -30,7 +38,7 @@ class SolarSystem extends React.Component {
           planetName: '',
         });
         this.callInfoCard(target);
-      }, 1000);
+      }, timeoutTimer);
       console.log(planetClick, 'onclickplanet');
     } else {
       this.callInfoCard(target);
@@ -42,18 +50,20 @@ class SolarSystem extends React.Component {
     const ourPlanet = planets.find((planet) => planet.name
       .toLowerCase().includes(innerText.toLowerCase()));
     this.updatePlanet(ourPlanet);
-    const divInfo = document.querySelector('.planet-info');
+    const divInfo = document.querySelector(infoClassName);
     divInfo.classList.add('animate__animated', 'animate__slideInLeft');
     const typewriterDiv = document.querySelector('.writer');
     typewriterDiv.innerHTML = '';
     this.createWriter(typewriterDiv);
   };
-  
-  createWriter = (typewriterDiv) =>{
+
+  createWriter = (typewriterDiv) => {
+    const timeoutTimer = 850;
     setTimeout(() => {
       const { planetName, planetDescription } = this.state;
       const { distanceFromSun, orbitalPeriod,
         radius, mass, lengthOfDay } = planetDescription;
+      // eslint-disable-next-line no-unused-vars
       const typewriter = new Typewriter(typewriterDiv, {
         strings: `Planeta: ${planetName} 
         <br/> Distancia do Sol: ${distanceFromSun}
@@ -64,10 +74,9 @@ class SolarSystem extends React.Component {
         delay: 15,
         autoStart: true,
       });
-    }, 850);
+    }, timeoutTimer);
   };
-  
-  
+
   updatePlanet = (ourPlanet) => {
     this.setState({
       planetName: ourPlanet.name,
@@ -75,16 +84,10 @@ class SolarSystem extends React.Component {
       planetDescription: ourPlanet.description,
       planetClick: true,
     });
-  }
-
-componentWillUnmount() {
-  const divInfo = document.querySelector('.planet-info');
-  divInfo.classList.remove('animate__animated', 'animate__slideOutRight');
-
-}
+  };
 
   render() {
-    const { planetClick, planetName, planetImage, planetDescription } = this.state;
+    const { planetClick, planetName, planetImage } = this.state;
     return (
       <div className="solar-system" data-testid="solar-system">
         <Title headline="Planetas" />
