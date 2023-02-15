@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable react/prop-types */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import PropTypes from 'prop-types';
 import './MissionCard.css';
@@ -6,10 +9,18 @@ import { ImLocation } from 'react-icons/im';
 
 class MissionCard extends React.Component {
   render() {
-    const { name, year, country, destination, missionOnClick, missionIndex} = this.props;
+    const { name, year, country, destination, missionOnClick, missionIndex } = this.props;
     return (
-      <div className={ `mission-card ${missionIndex}` } onClick={ missionOnClick }>
-        <p data-testid="mission-name" className={`mission-name ${missionIndex}`}>{ name }</p>
+      <div
+        className={ `mission-card ${missionIndex}` }
+        onClick={ missionOnClick }
+      >
+        <p
+          data-testid="mission-name"
+          className={ `mission-name ${missionIndex}` }
+        >
+          { name }
+        </p>
         <hr />
         <section className={ `mission-info ${missionIndex}` }>
           <p className={ missionIndex }>

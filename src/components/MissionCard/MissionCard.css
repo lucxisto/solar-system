@@ -3,8 +3,8 @@
   border-radius: 6px;
   display: inline-block;
   font-size: medium;
-  height: 150px;
-  margin: 5px;
+  height: 10rem;
+  margin: 0.3rem;
   width: 250px;
 }
 
@@ -14,7 +14,7 @@
 
 
 .mission-name {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 700;
 }
 
@@ -28,10 +28,10 @@ hr {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-around;
-  padding-top: 25px;
+  padding-top: 1.5rem;
 }
 
 .mission-info p {
-  font-size: 10px;
+  font-size: 0.65rem;
   margin: 0 5px;
 }

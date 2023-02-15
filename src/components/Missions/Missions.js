@@ -1,3 +1,7 @@
+/* eslint-disable react/no-unused-state */
+/* eslint-disable no-magic-numbers */
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/no-unresolved */
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode } from 'swiper';
@@ -49,10 +53,11 @@ class Missions extends React.Component {
         destination: '',
         about: '',
       },
-    }
+    };
   }
+
   onClickMission = ({ target }) => {
-    const missionIndex = parseFloat(target.className.replace(/[^0-9]/g, ''))
+    const missionIndex = parseFloat(target.className.replace(/[^0-9]/g, ''));
     const ourMission = missions.find((_mission, index) => index === missionIndex);
     this.updateMission(ourMission);
     const missionTypewriter = document.querySelector('.mission-info-card');
@@ -62,14 +67,14 @@ class Missions extends React.Component {
 
   createWriter = (typewriterDiv) => {
     setTimeout(() => {
-      const { about } = this.state.mission;
+      const { mission: { about } } = this.state;
       const typewriter = new Typewriter(typewriterDiv, {
         strings: about,
-        delay: 45,
+        delay: 10,
         autoStart: true,
       });
-    }, 500);
-  }
+    }, 1000);
+  };
 
   updateMission = (mission) => {
     const { name, year, country, destination, about } = mission;
@@ -80,19 +85,19 @@ class Missions extends React.Component {
         country,
         destination,
         about,
-      }
-    })
-  }
+      },
+    });
+  };
 
   render() {
     return (
       <div className="mission-container">
         <Title headline="Missões" />
         <Swiper
-          grabCursor={ true }
+          grabCursor
           modules={ [FreeMode] }
           className="mySwiper container"
-          keyboard={ true }
+          keyboard
           breakpoints={ breakpointsParameter }
         >
           {missions.map((mission, index) => (
@@ -109,9 +114,9 @@ class Missions extends React.Component {
               />
             </SwiperSlide>
           ))}
-          
+
         </Swiper>
-        <section className='mission-info-card' />
+        <section className="mission-info-card" />
       </div>
     );
   }
