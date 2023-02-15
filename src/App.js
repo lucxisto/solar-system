@@ -11,6 +11,7 @@ class App extends React.Component {
         <Header />
         <SolarSystem />
         <Missions />
+        <footer />
       </div>
     );
   }

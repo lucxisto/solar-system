@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;600&display=swap') ;
+
 .App {
   text-align: center;
 }
@@ -9,14 +11,17 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   color: rgb(200, 175, 0);
-
-  /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
-  font-family: Roboto Mono;
-  font-size: 20px;
+  filter: sepia(0.6);
+  font-family: Roboto Mono , monospace;
+  font-size: 1.25rem;
   text-align: center;
 }
 
 .main {
   margin: auto;
   max-width: 80%;
+}
+
+footer {
+  height: 3.125rem;
 }
